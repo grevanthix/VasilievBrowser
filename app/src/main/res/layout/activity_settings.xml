@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_settings"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/btnCustomization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingTop="12dp"
+            android:paddingBottom="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customization"
+                android:textColor="@color/text_high_emphasis"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            android:textColor="@color/text_medium_emphasis"
+            android:textSize="13sp" />
+        <Spinner
+            android:id="@+id/spinnerLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/accent_primary"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/active_search"
+            android:textColor="@color/text_medium_emphasis"
+            android:textSize="13sp" />
+        <Spinner
+            android:id="@+id/spinnerSearch"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/accent_primary"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/homepage"
+            android:textColor="@color/text_medium_emphasis"
+            android:textSize="13sp"
+            android:layout_marginBottom="4dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupHomepageType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <RadioButton
+                android:id="@+id/radioHomepageBuiltin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/builtin"
+                android:textColor="@color/text_high_emphasis" />
+            <RadioButton
+                android:id="@+id/radioHomepageCustom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/custom"
+                android:textColor="@color/text_high_emphasis" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/editHomepage"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textUri" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ua_mode"
+            android:textColor="@color/text_medium_emphasis"
+            android:textSize="13sp"
+            android:layout_marginBottom="4dp" />
+        <Spinner
+            android:id="@+id/spinnerUa"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/accent_primary"
+            android:layout_marginBottom="16dp" />
+
+        <Switch
+            android:id="@+id/switchJs"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/enable_js"
+            android:textColor="@color/text_high_emphasis"
+            android:thumbTint="@color/accent_primary" />
+
+        <Switch
+            android:id="@+id/switchImages"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/load_images"
+            android:textColor="@color/text_high_emphasis"
+            android:thumbTint="@color/accent_primary" />
+
+        <Switch
+            android:id="@+id/switchRestoreTabs"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/restore_tabs"
+            android:textColor="@color/text_high_emphasis"
+            android:thumbTint="@color/accent_primary" />
+
+        <Button
+            android:id="@+id/btnClearData"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/surface_variant"
+            android:text="@string/clear_cache_btn"
+            android:textColor="@color/incognito_accent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        
+
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/text_medium_emphasis"
+            android:textSize="13sp"
+            android:layout_marginBottom="5dp" />
+        <TextView
+            android:id="@+id/tvTelegram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/author_telegram"
+            android:textColor="@color/text_medium_emphasis"
+            android:textSize="13sp"
+            android:padding="0dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="0dp" />
+    </LinearLayout>
+</ScrollView>

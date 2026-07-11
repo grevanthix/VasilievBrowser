@@ -1,0 +1,26 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'ru.unknows.vasiliev'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "ru.unknows.vasiliev"
+        
+        minSdk 21
+        
+        targetSdk 34 
+        
+        versionCode 41
+        versionName "v2.0.41-TEST"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}

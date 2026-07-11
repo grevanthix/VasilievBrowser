@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="android:colorBackground">@color/background_dark</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+
+        <item name="android:textColor">@color/text_high_emphasis</item>
+        <item name="android:textColorPrimary">@color/text_high_emphasis</item>
+        <item name="android:textColorSecondary">@color/text_medium_emphasis</item>
+        <item name="android:textColorHint">@color/text_medium_emphasis</item>
+        <item name="android:editTextColor">@color/text_high_emphasis</item>
+
+        <item name="android:colorAccent">@color/accent_primary</item>
+        <item name="android:colorControlActivated">@color/accent_primary</item>
+        <item name="android:colorControlNormal">@color/surface_variant</item>
+        <item name="android:colorControlHighlight">@color/accent_secondary</item>
+    </style>
+</resources>

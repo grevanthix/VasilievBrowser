@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/customization"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/surface_dark"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+        <LinearLayout
+            android:id="@+id/previewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/background_dark"
+            android:orientation="vertical"
+            android:elevation="4dp">
+
+            <LinearLayout
+                android:id="@+id/previewToolbarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:background="@color/background_dark">
+                <ImageButton
+                    android:id="@+id/previewBtnForward"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="6dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_tuda" />
+                <LinearLayout
+                    android:id="@+id/previewInputContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_input"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="google.com"
+                        android:textColor="@color/text_high_emphasis"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/previewBtnGridToolbar"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="6dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_tabs_grid" />
+                <ImageButton
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_more_menu" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/previewTabsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@color/background_dark"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+                <ImageButton
+                    android:id="@+id/previewTabInactive"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/bg_tab_inactive"
+                    android:src="@drawable/ic_add_plus"
+                    android:layout_marginRight="6dp"/>
+                <TextView
+                    android:id="@+id/previewTabActive"
+                    android:layout_width="80dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/bg_tab_active"
+                    android:gravity="center"
+                    android:text="@string/tab"
+                    android:textColor="@color/text_high_emphasis"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/previewWebView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/surface_variant">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/page_content"
+                    android:textColor="@color/text_medium_emphasis" />
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/toolbar_position"
+                android:textColor="@color/text_medium_emphasis"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp" />
+            <RadioGroup
+                android:id="@+id/radioGroupToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+                <RadioButton
+                    android:id="@+id/radioTop"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/top"
+                    android:textColor="@color/text_high_emphasis" />
+                <RadioButton
+                    android:id="@+id/radioBottom"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bottom"
+                    android:textColor="@color/text_high_emphasis" />
+            </RadioGroup>
+
+            <Switch
+                android:id="@+id/switchTabBar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/show_tab_bar"
+                android:textColor="@color/text_high_emphasis"
+                android:thumbTint="@color/accent_primary" />
+
+            <Switch
+                android:id="@+id/switchGridBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/show_grid_btn"
+                android:textColor="@color/text_high_emphasis"
+                android:thumbTint="@color/accent_primary" />
+
+            <Switch
+                android:id="@+id/switchForwardBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/show_forward_btn"
+                android:textColor="@color/text_high_emphasis"
+                android:thumbTint="@color/accent_primary" />
+
+            <Switch
+                android:id="@+id/switchBlackBg"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/black_bg"
+                android:textColor="@color/text_high_emphasis"
+                android:thumbTint="@color/accent_primary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/corner_radius"
+                    android:textColor="@color/text_medium_emphasis"
+                    android:textSize="13sp" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/tvCornerRadiusValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12dp"
+                    android:textColor="@color/text_high_emphasis"
+                    android:textSize="13sp"
+                    android:layout_marginRight="8dp"/>
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekCornerRadius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:max="25"
+                android:progress="12"
+                android:thumbTint="@color/accent_primary"
+                android:progressTint="@color/accent_primary" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

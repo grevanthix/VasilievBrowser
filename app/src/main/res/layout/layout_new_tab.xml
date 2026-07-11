@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/newTabPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="32dp">
+
+        <ImageView
+            android:id="@+id/ntpIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_vasiliev"
+            android:visibility="gone"
+            android:layout_marginRight="0dp" />
+
+        <TextView
+            android:id="@+id/ntpTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/accent_primary"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ntpInputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_input"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp"
+        android:paddingRight="6dp"
+        android:layout_marginBottom="24dp">
+
+        <EditText
+            android:id="@+id/ntpInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="@string/hint_url"
+            android:imeOptions="actionGo"
+            android:inputType="textUri"
+            android:maxLines="1"
+            android:textColor="@color/text_high_emphasis"
+            android:textColorHint="@color/text_medium_emphasis"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/ntpGo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_forward" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/ntpIncognito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ntp_incognito"
+        android:textColor="@color/text_medium_emphasis"
+        android:textSize="14sp"
+        android:paddingLeft="8dp" />
+
+</LinearLayout>

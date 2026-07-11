@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_title"
+            android:textColor="@color/accent_primary"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_subtitle"
+            android:textColor="@color/text_medium_emphasis"
+            android:textSize="14sp"
+            android:layout_marginBottom="32dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_search"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+        <Spinner
+            android:id="@+id/welcomeSpinnerSearch"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/accent_primary"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/homepage"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <RadioGroup
+            android:id="@+id/welcomeRadioGroupHomepageType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+            <RadioButton
+                android:id="@+id/welcomeRadioHomepageBuiltin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/builtin"
+                android:textColor="@color/text_high_emphasis"
+                android:checked="true" />
+            <RadioButton
+                android:id="@+id/welcomeRadioHomepageCustom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/custom"
+                android:textColor="@color/text_high_emphasis" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/welcomeEditHomepage"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_input"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="https://google.com"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textUri"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/display_params"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+        <Switch
+            android:id="@+id/welcomeSwitchJs"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="@string/enable_js"
+            android:textColor="@color/text_high_emphasis"
+            android:thumbTint="@color/accent_primary"
+            android:checked="true" />
+        <Switch
+            android:id="@+id/welcomeSwitchImages"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="@string/load_images"
+            android:textColor="@color/text_high_emphasis"
+            android:thumbTint="@color/accent_primary"
+            android:checked="true"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/welcomeBtnSave"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/accent_primary"
+            android:text="@string/start_work"
+            android:textColor="@color/background_dark"
+            android:textStyle="bold" />
+    </LinearLayout>
+</ScrollView>

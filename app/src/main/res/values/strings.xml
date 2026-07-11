@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vasiliev</string>
+    <string name="app_name_suffix">asiliev</string>
+    <string name="hint_url">Search or enter address</string>
+    <string name="hint_find">Find...</string>
+    <string name="new_tab">New tab</string>
+    <string name="history_title">History</string>
+    <string name="clear">Clear</string>
+    <string name="customization">Appearance</string>
+    <string name="toolbar_position">Toolbar position</string>
+    <string name="top">Top</string>
+    <string name="bottom">Bottom</string>
+    <string name="show_tab_bar">Show tab bar?</string>
+    <string name="show_grid_btn">Show tab grid button?</string>
+    <string name="show_forward_btn">Show forward button?</string>
+    <string name="corner_radius">Corner radius</string>
+    <string name="black_bg">Black background?</string>
+    <string name="restart_needed">Restart the app to apply changes.</string>
+    <string name="page_content">Page content</string>
+    <string name="tab">Tab</string>
+    <string name="download_started">Download started</string>
+    <string name="text_copied">Text copied</string>
+    <string name="link_copied">Link copied</string>
+    <string name="menu_create_tab">New tab</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_history">History</string>
+    <string name="menu_find">Find</string>
+    <string name="menu_source">View source</string>
+    <string name="menu_settings">Browser settings</string>
+    <string name="menu_close_all_tabs">Close all tabs</string>
+    <string name="unnamed">Unnamed</string>
+    <string name="ntp_incognito">Incognito?</string>
+    <string name="welcome_title">Welcome!</string>
+    <string name="welcome_subtitle">Customize browser "Vasiliev"</string>
+    <string name="default_search">Default search engine</string>
+    <string name="homepage">Homepage</string>
+    <string name="builtin">Built-in</string>
+    <string name="custom">Custom</string>
+    <string name="display_params">Display parameters</string>
+    <string name="enable_js">Enable JavaScript</string>
+    <string name="load_images">Load images automatically</string>
+    <string name="restore_tabs">Restore tabs?</string>
+    <string name="start_work">Get started</string>
+    <string name="copy_text">Copy text</string>
+    <string name="copy_url">Copy URL</string>
+    <string name="open_new_tab">Open in new tab</string>
+    <string name="open_incognito">Open in incognito</string>
+    <string name="active_search">Active search engine</string>
+    <string name="ua_mode">User Agent mode</string>
+    <string name="clear_cache_btn">Clear cache and cookies</string>
+    <string name="cache_cleared">Cache cleared</string>
+    <string name="save_changes">Save changes</string>
+    <string name="language">Language</string>
+    <string name="lang_system">System Default</string>
+    <string name="lang_ru">Русский (RU)</string>
+    <string name="lang_ba">Русский (BA)</string>
+    <string name="lang_en">English (US)</string>
+    <string name="version">Version: %s</string>
+    <string name="tab_grid">Tab grid</string>
+    <string name="registry_blocked_title">Dangerous website</string>
+    <string name="registry_blocked_msg">This website is blocked.
+It is not safe cuz it may spread harmful software or try to steal your personal data, passwords, and credit card details.</string>
+    <string name="registry_close">Go back</string>
+    
+    <string name="registry_warning_title">Security warning</string>
+    <string name="registry_warning_msg">This website might be dangerous or unwanted.
+If you open it, your personal information or your device could be at risk.
+Open anyway?</string>
+    <string name="registry_open">Open anyway</string>
+    <string name="registry_cancel">Go back</string>
+
+    <string name="author_telegram">Author on Telegram</string>
+</resources>

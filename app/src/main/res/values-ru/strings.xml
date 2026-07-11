@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Васильев</string>
+    <string name="app_name_suffix"></string>
+    <string name="hint_url">Поиск или адрес</string>
+    <string name="hint_find">Найти...</string>
+    <string name="new_tab">Новая вкладка</string>
+    <string name="history_title">История</string>
+    <string name="clear">Очистить</string>
+    <string name="customization">Внешний вид</string>
+    <string name="toolbar_position">Расположение панели навигации</string>
+    <string name="top">Сверху</string>
+    <string name="bottom">Снизу</string>
+    <string name="show_tab_bar">Показывать панель вкладок?</string>
+    <string name="show_grid_btn">Показывать кнопку сетки вкладок?</string>
+    <string name="show_forward_btn">Показывать кнопку «Вперёд»?</string>
+    <string name="corner_radius">Закругление углов</string>
+    <string name="black_bg">Чёрный фон?</string>
+    <string name="restart_needed">Перезапустите приложение для применения изменений.</string>
+    <string name="page_content">Содержимое страницы</string>
+    <string name="tab">Вкладка</string>
+    <string name="download_started">Загрузка файла начата</string>
+    <string name="text_copied">Текст скопирован</string>
+    <string name="link_copied">Ссылка скопирована</string>
+    <string name="menu_create_tab">Новая вкладка</string>
+    <string name="menu_tools">Инструменты</string>
+    <string name="menu_history">История</string>
+    <string name="menu_find">Найти</string>
+    <string name="menu_source">Просмотреть код</string>
+    <string name="menu_settings">Параметры браузера</string>
+    <string name="menu_close_all_tabs">Закрыть все вкладки</string>
+    <string name="unnamed">Без имени</string>
+    <string name="ntp_incognito">Инкогнито?</string>
+    <string name="welcome_title">Добро пожаловать!</string>
+    <string name="welcome_subtitle">Настройте браузер «Васильев» под себя</string>
+    <string name="default_search">Поисковая система по умолчанию</string>
+    <string name="homepage">Стартовая страница</string>
+    <string name="builtin">Встроенная</string>
+    <string name="custom">Своя</string>
+    <string name="display_params">Параметры отображения</string>
+    <string name="enable_js">Исполнение сценариев JavaScript</string>
+    <string name="load_images">Автозагрузка картинок</string>
+    <string name="restore_tabs">Восстанавливать вкладки?</string>
+    <string name="start_work">Начать работу</string>
+    <string name="copy_text">Копировать текст</string>
+    <string name="copy_url">Копировать адрес</string>
+    <string name="open_new_tab">Открыть в новой вкладке</string>
+    <string name="open_incognito">Открыть в инкогнито вкладке</string>
+    <string name="active_search">Активный поисковый движок</string>
+    <string name="ua_mode">Режим User Agent</string>
+    <string name="clear_cache_btn">Очистить кэш и файлы cookie</string>
+    <string name="cache_cleared">Кэш очищен</string>
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="language">Язык</string>
+    <string name="lang_system">Системный</string>
+    <string name="lang_ru">Русский (RU)</string>
+    <string name="lang_ba">Русский (BA)</string>
+    <string name="lang_en">English (US)</string>
+    <string name="version">Версия: %s</string>
+    <string name="tab_grid">Вкладки</string>
+    <string name="registry_blocked_title">Опасный сайт</string>
+    <string name="registry_blocked_msg">Доступ к ресурсу заблокирован.
+Сайт признан небезопасным, так как на нем может распространяться вредоносное программное обеспечение или содержаться фишинговый контент, предназначенный для кражи ваших личных данных, паролей и банковских реквизитов.</string>
+    <string name="registry_close">Вернуться назад</string>
+    <string name="registry_warning_title">Подозрительный сайт</string>
+    <string name="registry_warning_msg">Сайт признан нежелательным или потенциально опасным.
+Дальнейший переход может угрожать конфиденциальности ваших данных или стабильности работы устройства.
+Всё равно открыть?</string>
+    <string name="registry_open">Всё равно открыть</string>
+    <string name="registry_cancel">Отмена</string>
+    <string name="author_telegram">Автор в Telegram</string>
+</resources>

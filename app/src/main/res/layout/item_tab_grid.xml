@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="4dp">
+        <TextView
+            android:id="@+id/gridTabTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_high_emphasis"
+            android:textSize="12sp"
+            android:layout_toStartOf="@id/btnGridCloseTab"/>
+        <ImageButton
+            android:id="@+id/btnGridCloseTab"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_area_51"
+            android:tint="@color/text_medium_emphasis" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/gridTabPreview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:background="@color/surface_dark" />
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_dark">#121413</color>
+    <color name="surface_dark">#1C2124</color>
+    <color name="surface_variant">#2C3540</color>
+
+    <color name="accent_primary">#BAC9D0</color>
+    <color name="accent_secondary">#1A2530</color>
+
+    <color name="text_high_emphasis">#E2E8F0</color>
+    <color name="text_medium_emphasis">#94A3B8</color>
+    <color name="text_error">#F87171</color>
+
+    <color name="incognito_bg">#171310</color>
+    <color name="incognito_surface">#211C18</color>
+    <color name="incognito_variant">#322820</color>
+
+    <color name="incognito_accent">#DEC1B1</color>
+    <color name="incognito_secondary">#2A1E16</color>
+</resources>
