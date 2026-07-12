@@ -1286,6 +1286,28 @@ android.widget.Toast.LENGTH_SHORT).show();
 
         @Override
         public void onPageFinished(WebView w, String u) {
+            super.onPageFinished(w, u);
+            
+            if (activeTab == tInfo) {
+                theUrlInput.setText(u);
+                
+                loadBar.setVisibility(View.GONE);
+            }
+            
+            boolean incognito = tInfo.incognito;
+            if (incognito == false) {
+                String pageTitle = w.getTitle();
+                
+                if (pageTitle != null) {
+                    if (pageTitle.isEmpty() == false) {
+                        myDb.addRecord(pageTitle, u);
+                    } else {
+                        myDb.addRecord("Untitled", u);
+                    }
+                } else {
+                    myDb.addRecord("Untitled", u);
+                }
+            }
         }
     }
 

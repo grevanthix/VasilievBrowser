@@ -13,12 +13,6 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-/*
-смена позиции тулбара +
-сикбар для смены оакруглений +
-выбор темы - потом, в версии 2.0
-скрытие кнопки вперёд +
-*/
 
 public class CustomizationActivity extends Activity {
 
