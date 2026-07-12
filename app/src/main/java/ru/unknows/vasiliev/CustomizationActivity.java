@@ -44,6 +44,7 @@ public class CustomizationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customization);
         BgUtils.applyBlackBg(this);
+        BgUtils.applyBars(this);
 
         mySettings = getSharedPreferences("vasiliev_prefs", MODE_PRIVATE);
 

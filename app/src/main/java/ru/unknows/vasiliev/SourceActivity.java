@@ -19,6 +19,7 @@ public class SourceActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_source);
         BgUtils.applyBlackBg(this);
+        BgUtils.applyBars(this);
 
         TextView t = (TextView) findViewById(R.id.tvSource);
         t.setText(htmlCode);

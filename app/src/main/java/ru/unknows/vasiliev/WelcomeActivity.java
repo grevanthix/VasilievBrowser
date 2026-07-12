@@ -33,6 +33,7 @@ public class WelcomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         BgUtils.applyBlackBg(this);
+        BgUtils.applyBars(this);
 
         searchSpin = (Spinner) findViewById(R.id.welcomeSpinnerSearch);
         homeGrp = (RadioGroup) findViewById(R.id.welcomeRadioGroupHomepageType);

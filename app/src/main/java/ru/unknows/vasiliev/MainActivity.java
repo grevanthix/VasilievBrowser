@@ -985,6 +985,7 @@ android.widget.Toast.LENGTH_SHORT).show();
         webBox.setBackgroundColor(bgCol);
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(bgCol);
+            getWindow().setNavigationBarColor(bgCol);
         }
 
         View uBox = findViewById(R.id.urlInputContainer);

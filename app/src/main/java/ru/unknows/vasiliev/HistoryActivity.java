@@ -31,6 +31,7 @@ public class HistoryActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         BgUtils.applyBlackBg(this);
+        BgUtils.applyBars(this);
 
         myDb = new HistoryDbHelper(this);
         theList = findViewById(R.id.historyListView);

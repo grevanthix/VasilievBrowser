@@ -53,6 +53,7 @@ public class SettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         BgUtils.applyBlackBg(this);
+        BgUtils.applyBars(this);
 
         myPrefs = getSharedPreferences("vasiliev_prefs", MODE_PRIVATE);
 
