@@ -7,7 +7,7 @@
     <string name="new_tab">New tab</string>
     <string name="history_title">History</string>
     <string name="clear">Clear</string>
-    <string name="customization">Appearance</string>
+    <string name="customization">Appearance...</string>
     <string name="toolbar_position">Toolbar position</string>
     <string name="top">Top</string>
     <string name="bottom">Bottom</string>
@@ -32,7 +32,7 @@
     <string name="unnamed">Unnamed</string>
     <string name="ntp_incognito">Incognito?</string>
     <string name="welcome_title">Welcome!</string>
-    <string name="welcome_subtitle">Customize browser "Vasiliev"</string>
+    <string name="welcome_subtitle">Customize "Vasiliev" browser</string>
     <string name="default_search">Default search engine</string>
     <string name="homepage">Homepage</string>
     <string name="builtin">Built-in</string>
