@@ -66,10 +66,8 @@ public class MainActivity extends Activity {
     private ValueCallback<Uri[]> myUploadMsg;
     private LinearLayout layoutMain;
     private View theToolbar;
-    private View theTabsBox;
     private EditText theUrlInput;
     private ProgressBar loadBar;
-    private LinearLayout tabsLine;
     private FrameLayout webBox;
     
     private View findBarLayout;
@@ -94,8 +92,6 @@ public class MainActivity extends Activity {
     private int searchIdx;
     private boolean toolbarBtm;
     private boolean homeCustom;
-    private boolean showTabs;
-    private boolean showGrid;
     private boolean showFwd;
     private boolean showBack;
     private boolean restoreTabsOn;
@@ -125,10 +121,8 @@ public class MainActivity extends Activity {
 
         layoutMain = (LinearLayout) findViewById(R.id.mainLayout);
         theToolbar = findViewById(R.id.toolbarLayout);
-        theTabsBox = findViewById(R.id.tabsLayout);
         theUrlInput = (EditText) findViewById(R.id.urlInput);
         loadBar = (ProgressBar) findViewById(R.id.progressBar);
-        tabsLine = (LinearLayout) findViewById(R.id.tabsContainer);
         webBox = (FrameLayout) findViewById(R.id.webViewContainer);
         
         findBarLayout = findViewById(R.id.findBarLayout);
@@ -144,7 +138,6 @@ public class MainActivity extends Activity {
         btnGrid = (ImageButton) findViewById(R.id.btnGridToolbar);
         ImageButton btnGo = (ImageButton) findViewById(R.id.btnGo);
         ImageButton btnMenu = (ImageButton) findViewById(R.id.btnMenu);
-        ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAddTab);
         View over = getLayoutInflater().inflate(R.layout.overlay_tab_grid, null);
         addContentView(over, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
         
@@ -267,12 +260,6 @@ public class MainActivity extends Activity {
                     return true;
                 }
                 return false;
-            }
-        });
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                makeNewTab(false, null);
             }
         });
         btnGrid.setOnClickListener(new View.OnClickListener() {
@@ -419,11 +406,6 @@ public class MainActivity extends Activity {
         homeCustom = myPrefs.getBoolean("pref_homepage_custom", false);
         homeUrl = myPrefs.getString("pref_homepage", "https://google.com");
         uaIdx = myPrefs.getInt("pref_user_agent", 0);
-        showTabs = myPrefs.getBoolean("pref_show_tab_bar", true);
-        showGrid = myPrefs.getBoolean("pref_show_grid_btn", true);
-        if (showTabs == false) {
-            showGrid = true;
-        }
         showFwd = myPrefs.getBoolean("pref_show_forward_btn", true);
         showBack = myPrefs.getBoolean("pref_show_back_btn", true);
         restoreTabsOn = myPrefs.getBoolean("pref_restore_tabs", true);
@@ -435,23 +417,9 @@ public class MainActivity extends Activity {
 
     private void buildLayouts() {
         layoutMain.removeView(theToolbar);
-        layoutMain.removeView(theTabsBox);
         layoutMain.removeView(findBarLayout);
         layoutMain.removeView(loadBar);
         layoutMain.removeView(webBox);
-        if (showTabs == true) {
-            theTabsBox.setVisibility(View.VISIBLE);
-        } else {
-            theTabsBox.setVisibility(View.GONE);
-        }
-        
-        if (btnGrid != null) {
-            if (showGrid == true) {
-                btnGrid.setVisibility(View.VISIBLE);
-            } else {
-                btnGrid.setVisibility(View.GONE);
-            }
-        }
         
         if (btnFwd != null) {
             if (showFwd == true) {
@@ -473,11 +441,9 @@ public class MainActivity extends Activity {
             layoutMain.addView(loadBar);
             layoutMain.addView(webBox);
             layoutMain.addView(findBarLayout);
-            layoutMain.addView(theTabsBox);
             layoutMain.addView(theToolbar);
         } else {
             layoutMain.addView(theToolbar);
-            layoutMain.addView(theTabsBox);
             layoutMain.addView(findBarLayout);
             layoutMain.addView(loadBar);
             layoutMain.addView(webBox);
@@ -761,10 +727,9 @@ public class MainActivity extends Activity {
         final View myPage = getLayoutInflater().inflate(R.layout.layout_new_tab, myFrame, false);
         myFrame.addView(w);
         myFrame.addView(myPage);
-        View tabV = getLayoutInflater().inflate(R.layout.item_tab, tabsLine, false);
-        TextView titleT = (TextView) tabV.findViewById(R.id.tabTitle);
-        ImageButton closeBtn = (ImageButton) tabV.findViewById(R.id.btnCloseTab);
-        final BrowserTab newT = new BrowserTab(myFrame, w, myPage, tabV, titleT, isIncog);
+        TextView titleT = new TextView(this);
+        titleT.setText(R.string.new_tab);
+        final BrowserTab newT = new BrowserTab(myFrame, w, myPage, titleT, isIncog);
         allTabs.add(newT);
         if (isIncog == true) {
             set.setCacheMode(WebSettings.LOAD_NO_CACHE);
@@ -867,7 +832,6 @@ android.widget.Toast.LENGTH_SHORT).show();
         });
 
         webBox.addView(myFrame);
-        tabsLine.addView(tabV);
 
         final EditText txtInp = (EditText) myPage.findViewById(R.id.ntpInput);
         ImageButton goB = (ImageButton) myPage.findViewById(R.id.ntpGo);
@@ -906,12 +870,6 @@ android.widget.Toast.LENGTH_SHORT).show();
                     } else {
                         boxInp.setBackgroundResource(R.drawable.bg_input);
                     }
-                }
-                
-                if (i) {
-                    newT.myTabV.setBackgroundResource(R.drawable.bg_tab_active_incognito);
-                } else {
-                    newT.myTabV.setBackgroundResource(R.drawable.bg_tab_active);
                 }
             }
         };
@@ -965,18 +923,6 @@ android.widget.Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
-        tabV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeTab(newT);
-            }
-        });
-        closeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeTab(newT);
-            }
-        });
         setupWebViews();
         changeTab(newT);
 
@@ -1023,7 +969,6 @@ android.widget.Toast.LENGTH_SHORT).show();
         
         layoutMain.setBackgroundColor(bgCol);
         theToolbar.setBackgroundColor(bgCol);
-        theTabsBox.setBackgroundColor(bgCol);
         if (findBarLayout != null) findBarLayout.setBackgroundColor(bgCol);
         webBox.setBackgroundColor(bgCol);
         if (android.os.Build.VERSION.SDK_INT >= 21) {
@@ -1067,18 +1012,8 @@ android.widget.Toast.LENGTH_SHORT).show();
             BrowserTab cur = allTabs.get(i);
             if (cur == t) {
                 cur.myFrame.setVisibility(View.VISIBLE);
-                if (cur.incognito) {
-                    cur.myTabV.setBackgroundResource(R.drawable.bg_tab_active_incognito);
-                } else {
-                    cur.myTabV.setBackgroundResource(R.drawable.bg_tab_active);
-                }
             } else {
                 cur.myFrame.setVisibility(View.GONE);
-                if (cur.incognito) {
-                    cur.myTabV.setBackgroundResource(R.drawable.bg_tab_inactive_incognito);
-                } else {
-                    cur.myTabV.setBackgroundResource(R.drawable.bg_tab_inactive);
-                }
             }
         }
 
@@ -1094,7 +1029,6 @@ android.widget.Toast.LENGTH_SHORT).show();
     }
 
     private void removeTab(BrowserTab t) {
-        tabsLine.removeView(t.myTabV);
         webBox.removeView(t.myFrame);
         t.myWeb.destroy();
         allTabs.remove(t);
@@ -1254,15 +1188,13 @@ android.widget.Toast.LENGTH_SHORT).show();
         FrameLayout myFrame;
         WebView myWeb;
         View myNtp;
-        View myTabV;
         TextView myTitle;
         boolean incognito;
         Bitmap img;
-        BrowserTab(FrameLayout f, WebView w, View n, View t, TextView txt, boolean i) {
+        BrowserTab(FrameLayout f, WebView w, View n, TextView txt, boolean i) {
             this.myFrame = f;
             this.myWeb = w;
             this.myNtp = n;
-            this.myTabV = t;
             this.myTitle = txt;
             this.incognito = i;
             this.img = null;

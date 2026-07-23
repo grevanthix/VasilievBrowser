@@ -92,33 +92,6 @@
                     android:src="@drawable/ic_more_menu" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/previewTabsLayout"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:background="@color/background_dark"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp">
-                <ImageButton
-                    android:id="@+id/previewTabInactive"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:background="@drawable/bg_tab_inactive"
-                    android:src="@drawable/ic_add_plus"
-                    android:layout_marginRight="6dp"/>
-                <TextView
-                    android:id="@+id/previewTabActive"
-                    android:layout_width="80dp"
-                    android:layout_height="24dp"
-                    android:background="@drawable/bg_tab_active"
-                    android:gravity="center"
-                    android:text="@string/tab"
-                    android:textColor="@color/text_high_emphasis"
-                    android:textSize="10sp" />
-            </LinearLayout>
-
             <FrameLayout
                 android:id="@+id/previewWebView"
                 android:layout_width="match_parent"
@@ -173,22 +146,6 @@
                     android:text="@string/bottom"
                     android:textColor="@color/text_high_emphasis" />
             </RadioGroup>
-
-            <Switch
-                android:id="@+id/switchTabBar"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="@string/show_tab_bar"
-                android:textColor="@color/text_high_emphasis"
-                android:thumbTint="@color/accent_primary" />
-
-            <Switch
-                android:id="@+id/switchGridBtn"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="@string/show_grid_btn"
-                android:textColor="@color/text_high_emphasis"
-                android:thumbTint="@color/accent_primary" />
 
             <Switch
                 android:id="@+id/switchForwardBtn"

@@ -18,15 +18,11 @@ public class CustomizationActivity extends Activity {
 
     private LinearLayout myPreviewBox;
     private View theToolbar;
-    private View theTabs;
     private View theWeb;
     private ImageButton btnFwd;
     private ImageButton btnBack;
-    private ImageButton btnGrid;
 
     private RadioGroup radioGrp;
-    private Switch swTabs;
-    private Switch swGrid;
     private Switch swFwd;
     private Switch swBack;
     private Switch swBlackBg;
@@ -55,15 +51,11 @@ public class CustomizationActivity extends Activity {
 
         myPreviewBox = (LinearLayout) findViewById(R.id.previewContainer);
         theToolbar = (View) findViewById(R.id.previewToolbarLayout);
-        theTabs = (View) findViewById(R.id.previewTabsLayout);
         theWeb = (View) findViewById(R.id.previewWebView);
         btnFwd = (ImageButton) findViewById(R.id.previewBtnForward);
         btnBack = (ImageButton) findViewById(R.id.previewBtnBack);
-        btnGrid = (ImageButton) findViewById(R.id.previewBtnGridToolbar);
 
         radioGrp = (RadioGroup) findViewById(R.id.radioGroupToolbar);
-        swTabs = (Switch) findViewById(R.id.switchTabBar);
-        swGrid = (Switch) findViewById(R.id.switchGridBtn);
         swFwd = (Switch) findViewById(R.id.switchForwardBtn);
         swBack = (Switch) findViewById(R.id.switchBackBtn);
         swBlackBg = (Switch) findViewById(R.id.switchBlackBg);
@@ -78,8 +70,6 @@ public class CustomizationActivity extends Activity {
             radioGrp.check(R.id.radioTop);
         }
 
-        swTabs.setChecked(mySettings.getBoolean("pref_show_tab_bar", true));
-        swGrid.setChecked(mySettings.getBoolean("pref_show_grid_btn", true));
         swFwd.setChecked(mySettings.getBoolean("pref_show_forward_btn", true));
         swBack.setChecked(mySettings.getBoolean("pref_show_back_btn", true));
         swBlackBg.setChecked(mySettings.getBoolean("pref_black_bg", false));
@@ -116,20 +106,10 @@ public class CustomizationActivity extends Activity {
         CompoundButton.OnCheckedChangeListener swListen = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton btn, boolean check) {
-                if (btn == swTabs) {
-                    if (check == false) {
-                        swGrid.setChecked(true);
-                        swGrid.setEnabled(false);
-                    } else {
-                        swGrid.setEnabled(true);
-                    }
-                }
                 refreshLook();
             }
         };
         
-        swTabs.setOnCheckedChangeListener(swListen);
-        swGrid.setOnCheckedChangeListener(swListen);
         swFwd.setOnCheckedChangeListener(swListen);
         swBack.setOnCheckedChangeListener(swListen);
 
@@ -139,11 +119,6 @@ public class CustomizationActivity extends Activity {
                 Toast.makeText(CustomizationActivity.this, getString(R.string.restart_needed), Toast.LENGTH_SHORT).show();
             }
         });
-
-        if (swTabs.isChecked() == false) {
-            swGrid.setChecked(true);
-            swGrid.setEnabled(false);
-        }
     }
 
     private void refreshLook() {
@@ -154,26 +129,8 @@ public class CustomizationActivity extends Activity {
             isBtm = true;
         }
         
-        boolean t = swTabs.isChecked();
-        boolean g = swGrid.isChecked();
         boolean f = swFwd.isChecked();
         boolean bk = swBack.isChecked();
-
-        if (t == false) {
-            g = true;
-        }
-
-        if (t == true) {
-            theTabs.setVisibility(View.VISIBLE);
-        } else {
-            theTabs.setVisibility(View.GONE);
-        }
-        
-        if (g == true) {
-            btnGrid.setVisibility(View.VISIBLE);
-        } else {
-            btnGrid.setVisibility(View.GONE);
-        }
 
         if (f == true) {
             btnFwd.setVisibility(View.VISIBLE);
@@ -189,11 +146,9 @@ public class CustomizationActivity extends Activity {
 
         if (isBtm == true) {
             myPreviewBox.addView(theWeb);
-            myPreviewBox.addView(theTabs);
             myPreviewBox.addView(theToolbar);
         } else {
             myPreviewBox.addView(theToolbar);
-            myPreviewBox.addView(theTabs);
             myPreviewBox.addView(theWeb);
         }
     }
@@ -202,16 +157,6 @@ public class CustomizationActivity extends Activity {
         View inp = theToolbar.findViewById(R.id.previewInputContainer);
         if (inp != null) {
             inp.setBackgroundResource(R.drawable.bg_input);
-        }
-
-        View tIn = theTabs.findViewById(R.id.previewTabInactive);
-        if (tIn != null) {
-            tIn.setBackgroundResource(R.drawable.bg_tab_inactive);
-        }
-
-        View tAc = theTabs.findViewById(R.id.previewTabActive);
-        if (tAc != null) {
-            tAc.setBackgroundResource(R.drawable.bg_tab_active);
         }
 
         myPreviewBox.invalidate();
@@ -226,14 +171,6 @@ public class CustomizationActivity extends Activity {
         }
         
         ed.putBoolean("pref_toolbar_bottom", btm);
-        ed.putBoolean("pref_show_tab_bar", swTabs.isChecked());
-        
-        boolean gr = swGrid.isChecked();
-        if (swTabs.isChecked() == false) {
-            gr = true;
-        }
-        
-        ed.putBoolean("pref_show_grid_btn", gr);
         ed.putBoolean("pref_show_forward_btn", swFwd.isChecked());
         ed.putBoolean("pref_show_back_btn", swBack.isChecked());
         ed.putBoolean("pref_black_bg", swBlackBg.isChecked());

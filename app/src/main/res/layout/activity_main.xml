@@ -83,38 +83,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/tabsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="@color/background_dark"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp">
-
-        <ImageButton
-            android:id="@+id/btnAddTab"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:background="@drawable/bg_tab_inactive"
-            android:src="@drawable/ic_add_plus"
-            android:layout_marginRight="8dp"/>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:fillViewport="true">
-            <LinearLayout
-                android:id="@+id/tabsContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" />
-        </HorizontalScrollView>
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/findBarLayout"
         android:layout_width="match_parent"
         android:layout_height="54dp"
