@@ -14,6 +14,7 @@
     <string name="show_tab_bar">Показывать панель вкладок?</string>
     <string name="show_grid_btn">Показывать кнопку сетки вкладок?</string>
     <string name="show_forward_btn">Показывать кнопку «Вперёд»?</string>
+    <string name="show_back_btn">Показывать кнопку «Назад»?</string>
     <string name="corner_radius">Закругление углов</string>
     <string name="black_bg">Чёрный фон?</string>
     <string name="restart_needed">Перезапустите приложение для применения изменений.</string>

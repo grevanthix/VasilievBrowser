@@ -47,6 +47,13 @@
                 android:paddingRight="8dp"
                 android:background="@color/background_dark">
                 <ImageButton
+                    android:id="@+id/previewBtnBack"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="6dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_suda" />
+                <ImageButton
                     android:id="@+id/previewBtnForward"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -188,6 +195,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:text="@string/show_forward_btn"
+                android:textColor="@color/text_high_emphasis"
+                android:thumbTint="@color/accent_primary" />
+
+            <Switch
+                android:id="@+id/switchBackBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/show_back_btn"
                 android:textColor="@color/text_high_emphasis"
                 android:thumbTint="@color/accent_primary" />
 

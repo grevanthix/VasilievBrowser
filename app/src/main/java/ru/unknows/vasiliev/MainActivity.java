@@ -84,6 +84,7 @@ public class MainActivity extends Activity {
     private BrowserTab activeTab = null;
 
     private ImageButton btnFwd;
+    private ImageButton btnBack;
     private ImageButton btnGrid;
     private SharedPreferences myPrefs;
     private HistoryDbHelper myDb;
@@ -96,6 +97,7 @@ public class MainActivity extends Activity {
     private boolean showTabs;
     private boolean showGrid;
     private boolean showFwd;
+    private boolean showBack;
     private boolean restoreTabsOn;
     private boolean blackBgOn;
     private String homeUrl;
@@ -138,6 +140,7 @@ public class MainActivity extends Activity {
         btnFindClose = (ImageButton) findViewById(R.id.btnFindClose);
 
         btnFwd = (ImageButton) findViewById(R.id.btnForward);
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
         btnGrid = (ImageButton) findViewById(R.id.btnGridToolbar);
         ImageButton btnGo = (ImageButton) findViewById(R.id.btnGo);
         ImageButton btnMenu = (ImageButton) findViewById(R.id.btnMenu);
@@ -234,6 +237,17 @@ public class MainActivity extends Activity {
                     if (activeTab.myWeb.canGoForward()) {
                 
                         activeTab.myWeb.goForward();
+                    }
+                }
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (activeTab != null && activeTab.myWeb != null) {
+                    if (activeTab.myWeb.canGoBack()) {
+
+                        activeTab.myWeb.goBack();
                     }
                 }
             }
@@ -411,6 +425,7 @@ public class MainActivity extends Activity {
             showGrid = true;
         }
         showFwd = myPrefs.getBoolean("pref_show_forward_btn", true);
+        showBack = myPrefs.getBoolean("pref_show_back_btn", true);
         restoreTabsOn = myPrefs.getBoolean("pref_restore_tabs", true);
         blackBgOn = myPrefs.getBoolean("pref_black_bg", false);
 
@@ -443,6 +458,14 @@ public class MainActivity extends Activity {
                 btnFwd.setVisibility(View.VISIBLE);
             } else {
                 btnFwd.setVisibility(View.GONE);
+            }
+        }
+
+        if (btnBack != null) {
+            if (showBack == true) {
+                btnBack.setVisibility(View.VISIBLE);
+            } else {
+                btnBack.setVisibility(View.GONE);
             }
         }
 
@@ -600,6 +623,26 @@ public class MainActivity extends Activity {
             btnFwd.getDrawable().setColorFilter(c, android.graphics.PorterDuff.Mode.SRC_IN);
         }
         btnFwd.setEnabled(canGo);
+    }
+
+    private void fixBackBtn() {
+        if (btnBack == null) return;
+        boolean canGo = false;
+        if (activeTab != null && activeTab.myWeb != null) {
+            canGo = activeTab.myWeb.canGoBack();
+        }
+
+        int c = 0;
+        if (canGo == true) {
+            c = getResources().getColor(R.color.text_high_emphasis);
+        } else {
+            c = getResources().getColor(R.color.text_medium_emphasis);
+        }
+
+        if (btnBack.getDrawable() != null) {
+            btnBack.getDrawable().setColorFilter(c, android.graphics.PorterDuff.Mode.SRC_IN);
+        }
+        btnBack.setEnabled(canGo);
     }
 
     private boolean isFileDownload(String u) {
@@ -1047,6 +1090,7 @@ android.widget.Toast.LENGTH_SHORT).show();
 
         CookieManager.getInstance().setAcceptCookie(!t.incognito);
         fixForwardBtn();
+        fixBackBtn();
     }
 
     private void removeTab(BrowserTab t) {
@@ -1282,6 +1326,7 @@ android.widget.Toast.LENGTH_SHORT).show();
             }
             if (activeTab == tInfo) {
                 fixForwardBtn();
+                fixBackBtn();
             }
         }
 

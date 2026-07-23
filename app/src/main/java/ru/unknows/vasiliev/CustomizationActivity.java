@@ -21,12 +21,14 @@ public class CustomizationActivity extends Activity {
     private View theTabs;
     private View theWeb;
     private ImageButton btnFwd;
+    private ImageButton btnBack;
     private ImageButton btnGrid;
 
     private RadioGroup radioGrp;
     private Switch swTabs;
     private Switch swGrid;
     private Switch swFwd;
+    private Switch swBack;
     private Switch swBlackBg;
 
     private SeekBar radiusBar;
@@ -56,12 +58,14 @@ public class CustomizationActivity extends Activity {
         theTabs = (View) findViewById(R.id.previewTabsLayout);
         theWeb = (View) findViewById(R.id.previewWebView);
         btnFwd = (ImageButton) findViewById(R.id.previewBtnForward);
+        btnBack = (ImageButton) findViewById(R.id.previewBtnBack);
         btnGrid = (ImageButton) findViewById(R.id.previewBtnGridToolbar);
 
         radioGrp = (RadioGroup) findViewById(R.id.radioGroupToolbar);
         swTabs = (Switch) findViewById(R.id.switchTabBar);
         swGrid = (Switch) findViewById(R.id.switchGridBtn);
         swFwd = (Switch) findViewById(R.id.switchForwardBtn);
+        swBack = (Switch) findViewById(R.id.switchBackBtn);
         swBlackBg = (Switch) findViewById(R.id.switchBlackBg);
         
         radiusBar = (SeekBar) findViewById(R.id.seekCornerRadius);
@@ -77,6 +81,7 @@ public class CustomizationActivity extends Activity {
         swTabs.setChecked(mySettings.getBoolean("pref_show_tab_bar", true));
         swGrid.setChecked(mySettings.getBoolean("pref_show_grid_btn", true));
         swFwd.setChecked(mySettings.getBoolean("pref_show_forward_btn", true));
+        swBack.setChecked(mySettings.getBoolean("pref_show_back_btn", true));
         swBlackBg.setChecked(mySettings.getBoolean("pref_black_bg", false));
 
         refreshLook();
@@ -126,6 +131,7 @@ public class CustomizationActivity extends Activity {
         swTabs.setOnCheckedChangeListener(swListen);
         swGrid.setOnCheckedChangeListener(swListen);
         swFwd.setOnCheckedChangeListener(swListen);
+        swBack.setOnCheckedChangeListener(swListen);
 
         swBlackBg.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -151,6 +157,7 @@ public class CustomizationActivity extends Activity {
         boolean t = swTabs.isChecked();
         boolean g = swGrid.isChecked();
         boolean f = swFwd.isChecked();
+        boolean bk = swBack.isChecked();
 
         if (t == false) {
             g = true;
@@ -172,6 +179,12 @@ public class CustomizationActivity extends Activity {
             btnFwd.setVisibility(View.VISIBLE);
         } else {
             btnFwd.setVisibility(View.GONE);
+        }
+
+        if (bk == true) {
+            btnBack.setVisibility(View.VISIBLE);
+        } else {
+            btnBack.setVisibility(View.GONE);
         }
 
         if (isBtm == true) {
@@ -222,6 +235,7 @@ public class CustomizationActivity extends Activity {
         
         ed.putBoolean("pref_show_grid_btn", gr);
         ed.putBoolean("pref_show_forward_btn", swFwd.isChecked());
+        ed.putBoolean("pref_show_back_btn", swBack.isChecked());
         ed.putBoolean("pref_black_bg", swBlackBg.isChecked());
         ed.putInt("pref_corner_radius", radiusBar.getProgress());
         ed.apply();

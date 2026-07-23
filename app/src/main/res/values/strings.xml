@@ -14,6 +14,7 @@
     <string name="show_tab_bar">Show tab bar?</string>
     <string name="show_grid_btn">Show tab grid button?</string>
     <string name="show_forward_btn">Show forward button?</string>
+    <string name="show_back_btn">Show back button?</string>
     <string name="corner_radius">Corner radius</string>
     <string name="black_bg">Black background?</string>
     <string name="restart_needed">Restart the app to apply changes.</string>

@@ -17,6 +17,14 @@
         android:background="@color/background_dark">
 
         <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_suda" />
+
+        <ImageButton
             android:id="@+id/btnForward"
             android:layout_width="32dp"
             android:layout_height="32dp"
