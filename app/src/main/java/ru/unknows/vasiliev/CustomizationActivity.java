@@ -2,6 +2,7 @@ package ru.unknows.vasiliev;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,6 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CustomizationActivity extends Activity {
 
@@ -91,7 +91,9 @@ public class CustomizationActivity extends Activity {
             public void onStartTrackingTouch(SeekBar s) {}
             @Override
             public void onStopTrackingTouch(SeekBar s) {
-                saveMyStuff();
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putInt("pref_corner_radius", radiusBar.getProgress());
+                ed.apply();
             }
         });
 
@@ -99,6 +101,13 @@ public class CustomizationActivity extends Activity {
             @Override
             public void onCheckedChanged(RadioGroup g, int id) {
                 refreshLook();
+                boolean btm = false;
+                if (id == R.id.radioBottom) {
+                    btm = true;
+                }
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putBoolean("pref_toolbar_bottom", btm);
+                ed.apply();
             }
         };
         radioGrp.setOnCheckedChangeListener(rListen);
@@ -107,6 +116,13 @@ public class CustomizationActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton btn, boolean check) {
                 refreshLook();
+                SharedPreferences.Editor ed = mySettings.edit();
+                if (btn == swFwd) {
+                    ed.putBoolean("pref_show_forward_btn", check);
+                } else if (btn == swBack) {
+                    ed.putBoolean("pref_show_back_btn", check);
+                }
+                ed.apply();
             }
         };
         
@@ -116,7 +132,13 @@ public class CustomizationActivity extends Activity {
         swBlackBg.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton btn, boolean check) {
-                Toast.makeText(CustomizationActivity.this, getString(R.string.restart_needed), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putBoolean("pref_black_bg", check);
+                ed.commit();
+                Intent i = new Intent(CustomizationActivity.this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                Runtime.getRuntime().exit(0);
             }
         });
     }
@@ -160,27 +182,5 @@ public class CustomizationActivity extends Activity {
         }
 
         myPreviewBox.invalidate();
-    }
-
-    private void saveMyStuff() {
-        SharedPreferences.Editor ed = mySettings.edit();
-        
-        boolean btm = false;
-        if (radioGrp.getCheckedRadioButtonId() == R.id.radioBottom) {
-            btm = true;
-        }
-        
-        ed.putBoolean("pref_toolbar_bottom", btm);
-        ed.putBoolean("pref_show_forward_btn", swFwd.isChecked());
-        ed.putBoolean("pref_show_back_btn", swBack.isChecked());
-        ed.putBoolean("pref_black_bg", swBlackBg.isChecked());
-        ed.putInt("pref_corner_radius", radiusBar.getProgress());
-        ed.apply();
-    }
-
-    @Override
-    public void onBackPressed() {
-        saveMyStuff();
-        super.onBackPressed();
     }
 }

@@ -7,9 +7,13 @@ import android.net.Uri;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +36,7 @@ public class SettingsActivity extends Activity {
     private RadioGroup homeRadGrp;
     private EditText homeEdit;
     private SharedPreferences myPrefs;
+    private boolean langTouched = false;
     
     private final String[] searchArr = {"Google", "DuckDuckGo", "SearX"};
     private final String[] uaArr = {"Android", "iPhone", "Desktop"};
@@ -96,6 +101,82 @@ public class SettingsActivity extends Activity {
         spinSearch.setSelection(myPrefs.getInt("pref_search_engine_index", 0));
         spinUa.setSelection(myPrefs.getInt("pref_user_agent", 0));
 
+        swJs.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(android.widget.CompoundButton btn, boolean check) {
+                SharedPreferences.Editor ed = myPrefs.edit();
+                ed.putBoolean("pref_js", check);
+                ed.apply();
+            }
+        });
+
+        swImg.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(android.widget.CompoundButton btn, boolean check) {
+                SharedPreferences.Editor ed = myPrefs.edit();
+                ed.putBoolean("pref_images", check);
+                ed.apply();
+            }
+        });
+
+        swRestore.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(android.widget.CompoundButton btn, boolean check) {
+                SharedPreferences.Editor ed = myPrefs.edit();
+                ed.putBoolean("pref_restore_tabs", check);
+                ed.apply();
+            }
+        });
+
+        spinSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences.Editor ed = myPrefs.edit();
+                ed.putInt("pref_search_engine_index", position);
+                ed.apply();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinUa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences.Editor ed = myPrefs.edit();
+                ed.putInt("pref_user_agent", position);
+                ed.apply();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinLang.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent ev) {
+                langTouched = true;
+                return false;
+            }
+        });
+
+        spinLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (langTouched == true) {
+                    String newL = langArr[position];
+                    SharedPreferences.Editor ed = myPrefs.edit();
+                    ed.putString("pref_language", newL);
+                    ed.commit();
+
+                    Intent i = new Intent(SettingsActivity.this, MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                    Runtime.getRuntime().exit(0);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
         boolean cust = myPrefs.getBoolean("pref_homepage_custom", false);
         if (cust == true) {
             homeRadGrp.check(R.id.radioHomepageCustom);
@@ -113,10 +194,34 @@ public class SettingsActivity extends Activity {
                 } else {
                     homeEdit.setVisibility(View.GONE);
                 }
+
+                boolean isCust = false;
+                if (id == R.id.radioHomepageCustom) {
+                    isCust = true;
+                }
+                SharedPreferences.Editor ed = myPrefs.edit();
+                ed.putBoolean("pref_homepage_custom", isCust);
+                ed.apply();
             }
         });
         
         homeEdit.setText(myPrefs.getString("pref_homepage", "https://google.com"));
+
+        homeEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                String h = s.toString().trim();
+                if (h.isEmpty() == false) {
+                    SharedPreferences.Editor ed = myPrefs.edit();
+                    ed.putString("pref_homepage", h);
+                    ed.apply();
+                }
+            }
+        });
 
         try {
             PackageInfo p = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -173,51 +278,5 @@ public class SettingsActivity extends Activity {
                 w.destroy();
             }
         });
-    }
-
-    private void saveMyStuff() {
-        SharedPreferences.Editor ed = myPrefs.edit();
-        
-        String curL = myPrefs.getString("pref_language", "system");
-        String newL = langArr[spinLang.getSelectedItemPosition()];
-        boolean changedL = false;
-        if (newL.equals(curL) == false) {
-            changedL = true;
-        }
-
-        ed.putString("pref_language", newL);
-        ed.putBoolean("pref_js", swJs.isChecked());
-        ed.putBoolean("pref_images", swImg.isChecked());
-        ed.putBoolean("pref_restore_tabs", swRestore.isChecked());
-        ed.putInt("pref_search_engine_index", spinSearch.getSelectedItemPosition());
-        ed.putInt("pref_user_agent", spinUa.getSelectedItemPosition());
-
-        boolean cust = false;
-        if (homeRadGrp.getCheckedRadioButtonId() == R.id.radioHomepageCustom) {
-            cust = true;
-        }
-        ed.putBoolean("pref_homepage_custom", cust);
-        
-        String h = homeEdit.getText().toString().trim();
-        if (h.isEmpty() == true) {
-            h = "https://google.com";
-        }
-        ed.putString("pref_homepage", h);
-
-        ed.commit();
-
-        if (changedL == true) {
-            Intent i = new Intent(this, MainActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-            Runtime.getRuntime().exit(0);
-        } else {
-            finish();
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        saveMyStuff();
     }
 }
