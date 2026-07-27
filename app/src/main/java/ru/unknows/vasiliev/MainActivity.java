@@ -679,7 +679,7 @@ public class MainActivity extends Activity {
             }
             if (name != null) {
                 name = name.replaceAll("[\\\\/:*?\"<>|]", "_");
-            } /* хз зачем, пусть будет */
+            }
             android.app.DownloadManager.Request req = new android.app.DownloadManager.Request(android.net.Uri.parse(u));
             req.setMimeType(mime);
        

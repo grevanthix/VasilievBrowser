@@ -28,6 +28,6 @@ public class SourceActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        htmlCode = ""; /* чистка чтобы не жрало память */
+        htmlCode = "";
     }
 }

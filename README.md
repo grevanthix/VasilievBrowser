@@ -25,7 +25,7 @@ A lightweight Android browser built without extra libraries or bloat, so it stay
 
 The browser has no built-in list of dangerous sites. By default the list is empty.
 
-If you want to add one, edit `res/raw/govnoedi` before building. The format example is in `res/raw/primer`.
+If you want to add one, edit `res/raw/blocklist` before building. The format example is in `res/raw/example`.
 
 ## Build (Linux)
 

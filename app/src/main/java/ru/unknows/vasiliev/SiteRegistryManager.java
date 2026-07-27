@@ -37,14 +37,14 @@ public class SiteRegistryManager {
 
     private SiteRegistryManager(Context ctx) {
         try {
-            InputStream str = ctx.getResources().openRawResource(R.raw.govnoedi);
+            InputStream str = ctx.getResources().openRawResource(R.raw.blocklist);
             BufferedReader rd = new BufferedReader(new InputStreamReader(str, "UTF-8"));
             String textLine;
             
             while ((textLine = rd.readLine()) != null) {
                 textLine = textLine.trim();
                 if (textLine.isEmpty() == true || textLine.startsWith("#") == true) {
-                    continue; /* честно, не знаю, зачем там комменты нужны, пусть будет */
+                    continue;
                 }
                 
                 int cPos = textLine.indexOf(':');

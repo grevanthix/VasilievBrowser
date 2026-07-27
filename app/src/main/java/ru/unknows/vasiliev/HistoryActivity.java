@@ -127,7 +127,7 @@ public class HistoryActivity extends Activity {
                     ImageButton b = (ImageButton) view;
                     if (s == 1) {
                         b.setImageResource(R.drawable.ic_star_filled);
-                    } else { /* иконки звёздочек рисовал ИИ */
+                    } else { /* the star icons drawn by ai */
                         b.setImageResource(R.drawable.ic_star_outline);
                     }
                     loadItems();

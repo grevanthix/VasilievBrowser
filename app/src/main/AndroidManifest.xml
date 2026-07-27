@@ -35,31 +35,31 @@
 
         <activity 
             android:name=".WelcomeActivity"
-            android:label="Первоначальная настройка"
+            android:label=""
             android:screenOrientation="portrait"
             android:resizeableActivity="true" />
 
         <activity 
             android:name=".SettingsActivity"
-            android:label="Настройки"
+            android:label=""
             android:screenOrientation="portrait"
             android:resizeableActivity="true" />
 
         <activity
             android:name=".CustomizationActivity"
-            android:label="Внешний вид"
+            android:label=""
             android:screenOrientation="portrait"
             android:resizeableActivity="true" />
 
         <activity 
             android:name=".HistoryActivity"
-            android:label="История"
+            android:label=""
             android:screenOrientation="portrait"
             android:resizeableActivity="true" />
 
         <activity
             android:name=".SourceActivity"
-            android:label="Исходник"
+            android:label=""
             android:screenOrientation="portrait"
             android:resizeableActivity="true" />
              
