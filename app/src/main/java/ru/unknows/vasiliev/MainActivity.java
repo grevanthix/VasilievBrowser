@@ -826,6 +826,103 @@ android.widget.Toast.LENGTH_SHORT).show();
                         d.show();
                         return true;
                     }
+                } else if (h.getType() == WebView.HitTestResult.IMAGE_TYPE) {
+                    final String imgUrl = h.getExtra();
+  
+                    if (imgUrl != null) {
+                        final android.app.Dialog d2 = new android.app.Dialog(MainActivity.this);
+                        d2.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
+                        d2.setContentView(R.layout.dialog_image_menu);
+
+ 
+                        if (d2.getWindow() != null) {
+                            d2.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+                            d2.getWindow().setLayout(android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+                        }
+
+                        TextView txtTitle2 = (TextView) d2.findViewById(R.id.menuTitle);
+                        txtTitle2.setText(imgUrl);
+
+                        d2.findViewById(R.id.menuCopyPicture).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String picUa1 = null;
+                                if (activeTab != null && activeTab.myWeb != null) {
+                                    picUa1 = activeTab.myWeb.getSettings().getUserAgentString();
+                                }
+                                final String picUa2 = picUa1;
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            java.net.URL u2 = new java.net.URL(imgUrl);
+                                            java.net.HttpURLConnection conn = (java.net.HttpURLConnection) u2.openConnection();
+                                            if (picUa2 != null) {
+                                                conn.setRequestProperty("User-Agent", picUa2);
+                                            }
+                                            conn.connect();
+                                            java.io.InputStream str1 = conn.getInputStream();
+                                            java.io.ByteArrayOutputStream bo = new java.io.ByteArrayOutputStream();
+                                            byte[] buf = new byte[4096];
+                                            int rn = 0;
+                                            while (true) {
+                                                rn = str1.read(buf);
+                                                if (rn == -1) {
+                                                    break;
+                                                }
+                                                bo.write(buf, 0, rn);
+                                            }
+                                            str1.close();
+                                            byte[] allBytes = bo.toByteArray();
+                                            final android.graphics.Bitmap bmp = android.graphics.BitmapFactory.decodeByteArray(allBytes, 0, allBytes.length);
+                                            if (bmp != null) {
+                                                java.io.File picFile = new java.io.File(getCacheDir(), "pic_copy.png");
+                                                java.io.FileOutputStream fos = new java.io.FileOutputStream(picFile);
+                                                bmp.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, fos);
+                                                fos.close();
+                                                final android.net.Uri uri2 = android.net.Uri.parse("content://ru.unknows.vasiliev.picprovider/pic_copy.png");
+                                                runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        android.content.ClipboardManager cb = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                                                        android.content.ClipData c = android.content.ClipData.newUri(getContentResolver(), "Image", uri2);
+                                                        cb.setPrimaryClip(c);
+                                                        android.widget.Toast.makeText(MainActivity.this, 
+getString(R.string.picture_copied), android.widget.Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                            }
+                                        } catch (Throwable err) {
+                                            err.printStackTrace();
+                                        }
+                                    }
+                                }).start();
+                                d2.dismiss();
+                            }
+                        });
+                        d2.findViewById(R.id.menuDownloadPicture).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String ext = android.webkit.MimeTypeMap.getFileExtensionFromUrl(imgUrl);
+                                String mime = null;
+                                if (ext != null && ext.isEmpty() == false) {
+                                    mime = android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext.toLowerCase());
+                                }
+                                if (mime == null) {
+                                    mime = "image/*";
+                                }
+                                String ua2 = null;
+                                if (activeTab != null && activeTab.myWeb != null) {
+                                    ua2 = activeTab.myWeb.getSettings().getUserAgentString();
+                                }
+                                startDl(imgUrl, ua2, null, mime);
+     
+                                d2.dismiss();
+                            }
+                        });
+                        d2.show();
+                        return true;
+                    }
                 }
                 return false;
             }

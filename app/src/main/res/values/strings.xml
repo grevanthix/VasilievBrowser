@@ -45,6 +45,9 @@
     <string name="start_work">Get started</string>
     <string name="copy_text">Copy text</string>
     <string name="copy_url">Copy URL</string>
+    <string name="copy_picture">Copy picture</string>
+    <string name="download_picture">Download picture</string>
+    <string name="picture_copied">Picture copied</string>
     <string name="open_new_tab">Open in new tab</string>
     <string name="open_incognito">Open in incognito</string>
     <string name="active_search">Active search engine</string>

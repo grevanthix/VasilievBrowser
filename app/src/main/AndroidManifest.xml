@@ -63,5 +63,11 @@
             android:screenOrientation="portrait"
             android:resizeableActivity="true" />
              
+        <provider
+            android:name=".PicProvider"
+            android:authorities="ru.unknows.vasiliev.picprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+
     </application>
 </manifest>
