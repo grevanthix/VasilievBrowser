@@ -36,31 +36,31 @@
         <activity 
             android:name=".WelcomeActivity"
             android:label=""
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:resizeableActivity="true" />
 
         <activity 
             android:name=".SettingsActivity"
             android:label=""
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:resizeableActivity="true" />
 
         <activity
             android:name=".CustomizationActivity"
             android:label=""
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:resizeableActivity="true" />
 
         <activity 
             android:name=".HistoryActivity"
             android:label=""
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:resizeableActivity="true" />
 
         <activity
             android:name=".SourceActivity"
             android:label=""
-            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:resizeableActivity="true" />
              
         <provider

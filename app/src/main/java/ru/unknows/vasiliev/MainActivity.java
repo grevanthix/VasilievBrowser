@@ -1170,6 +1170,19 @@ getString(R.string.picture_copied), android.widget.Toast.LENGTH_SHORT).show();
                 ImageView tImg = (ImageView) v.findViewById(R.id.gridTabPreview);
                 ImageButton btnC = (ImageButton) v.findViewById(R.id.btnGridCloseTab);
 
+                int gridColumns = 2;
+                int spacePx = (int) (12 * getResources().getDisplayMetrics().density);
+                int gridW = gridTabs.getWidth();
+                if (gridW <= 0) {
+                    gridW = prnt.getWidth();
+                }
+                int colW = (gridW - spacePx * (gridColumns + 1)) / gridColumns;
+                if (colW > 0) {
+                    ViewGroup.LayoutParams imgLp = tImg.getLayoutParams();
+                    imgLp.height = (int) (colW * 0.85);
+                    tImg.setLayoutParams(imgLp);
+                }
+
                 final BrowserTab bt = allTabs.get(pos);
                 String txt = bt.myTitle.getText().toString();
                 if (txt.isEmpty()) {
