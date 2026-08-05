@@ -13,8 +13,8 @@ android {
         
         targetSdk 34
         
-        versionCode 42
-        versionName "v2.1.42"
+        versionCode 43
+        versionName "v3.0.43"
     }
 
     buildTypes {

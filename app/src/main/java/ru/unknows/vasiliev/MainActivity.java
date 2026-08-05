@@ -1405,6 +1405,15 @@ getString(R.string.picture_copied), android.widget.Toast.LENGTH_SHORT).show();
         }
 
         @Override
+        public void onReceivedTitle(WebView w, String title) {
+            if (title != null && title.isEmpty() == false) {
+                tInfo.myTitle.setText(title);
+            } else {
+                tInfo.myTitle.setText(R.string.new_tab);
+            }
+        }
+
+        @Override
         public boolean onShowFileChooser(WebView w, ValueCallback<Uri[]> call, FileChooserParams params) {
             if (myUploadMsg != null) {
                 myUploadMsg.onReceiveValue(null);
