@@ -54,6 +54,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -331,6 +333,7 @@ public class MainActivity extends Activity {
                     } else {
                         makeNewTab(false, u);
                     }
+                    loadPreviewFile(allTabs.get(allTabs.size() - 1), x);
                 }
             }
         } catch (Exception e) {
@@ -352,11 +355,47 @@ public class MainActivity extends Activity {
                             arr.put(u);
                         }
                     }
+                    if (restoreTabsOn == true) {
+                        savePreviewFile(t, x);
+                    }
                 }
             }
             myPrefs.edit().putString("saved_tabs", arr.toString()).apply();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception pizdec) {}
+    }
+
+    private void savePreviewFile(BrowserTab t, int idx) {
+        if (t.img == null) return;
+        try {
+            int smallW = 200;
+            int smallH = (int) (t.img.getHeight() * (200.0 / t.img.getWidth()));
+            if (smallH <= 0) smallH = 1;
+            Bitmap small = Bitmap.createScaledBitmap(t.img, smallW, smallH, true);
+            File f = new File(getCacheDir(), "tab_preview_" + idx + ".jpg");
+            FileOutputStream fos = new FileOutputStream(f);
+            small.compress(Bitmap.CompressFormat.JPEG, 70, fos);
+            fos.close();
+            small.recycle();
+        } catch (Exception pizdec) {}
+    }
+
+    private void loadPreviewFile(BrowserTab t, int idx) {
+        try {
+            File f = new File(getCacheDir(), "tab_preview_" + idx + ".jpg");
+            if (f.exists()) {
+                Bitmap b = android.graphics.BitmapFactory.decodeFile(f.getAbsolutePath());
+                if (b != null) {
+                    t.img = b;
+                }
+            }
+        } catch (Exception e) {}
+    }
+
+    private void deletePreviewFile(BrowserTab t) {
+        int idx = allTabs.indexOf(t);
+        File f = new File(getCacheDir(), "tab_preview_" + idx + ".jpg");
+        if (f.exists()) {
+            f.delete();
         }
     }
 
@@ -1129,6 +1168,7 @@ getString(R.string.picture_copied), android.widget.Toast.LENGTH_SHORT).show();
         webBox.removeView(t.myFrame);
         t.myWeb.destroy();
         allTabs.remove(t);
+        deletePreviewFile(t);
         if (allTabs.isEmpty() == true) {
             finish();
         } else if (activeTab == t) {
