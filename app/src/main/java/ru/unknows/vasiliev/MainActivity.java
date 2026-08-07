@@ -375,7 +375,9 @@ public class MainActivity extends Activity {
             FileOutputStream fos = new FileOutputStream(f);
             small.compress(Bitmap.CompressFormat.JPEG, 70, fos);
             fos.close();
-            small.recycle();
+            if (small != t.img) {
+                small.recycle();
+            }
         } catch (Exception pizdec) {}
     }
 
