@@ -1167,8 +1167,8 @@ getString(R.string.picture_copied), android.widget.Toast.LENGTH_SHORT).show();
     private void removeTab(BrowserTab t) {
         webBox.removeView(t.myFrame);
         t.myWeb.destroy();
-        allTabs.remove(t);
         deletePreviewFile(t);
+        allTabs.remove(t);
         if (allTabs.isEmpty() == true) {
             finish();
         } else if (activeTab == t) {
