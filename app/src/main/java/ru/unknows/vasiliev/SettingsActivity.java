@@ -237,37 +237,6 @@ public class SettingsActivity extends Activity {
             }
         });
 
-        TextView tvTg = (TextView) findViewById(R.id.tvTelegram);
-        if (myPrefs.getBoolean("pref_tg_hidden", false) == true) {
-            tvTg.setVisibility(View.GONE);
-        }
-        tvTg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String channel = "your_channel";
-                try {
-                    Intent tgIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("tg://resolve?domain=" + channel));
-                    startActivity(tgIntent);
-                } catch (Exception e) {
-                    Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://t.me/" + channel));
-                    startActivity(webIntent);
-                }
-            }
-        });
-
-        tvTg.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                SharedPreferences.Editor ed = myPrefs.edit();
-                ed.putBoolean("pref_tg_hidden", true);
-                ed.commit();
-                v.setVisibility(View.GONE);
-                return true;
-            }
-        });
-        
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
