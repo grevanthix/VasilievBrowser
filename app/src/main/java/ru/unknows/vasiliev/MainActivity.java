@@ -42,6 +42,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebBackForwardList;
+import android.webkit.WebHistoryItem;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -247,6 +249,20 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        btnFwd.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showHistoryPopup(v, true);
+                return true;
+            }
+        });
+        btnBack.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showHistoryPopup(v, false);
+                return true;
+            }
+        });
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -361,7 +377,7 @@ public class MainActivity extends Activity {
                 }
             }
             myPrefs.edit().putString("saved_tabs", arr.toString()).apply();
-        } catch (Exception pizdec) {}
+        } catch (Exception e) {}
     }
 
     private void savePreviewFile(BrowserTab t, int idx) {
@@ -378,7 +394,7 @@ public class MainActivity extends Activity {
             if (small != t.img) {
                 small.recycle();
             }
-        } catch (Exception pizdec) {}
+        } catch (Exception e) {}
     }
 
     private void loadPreviewFile(BrowserTab t, int idx) {
@@ -650,6 +666,43 @@ public class MainActivity extends Activity {
             btnBack.getDrawable().setColorFilter(c, android.graphics.PorterDuff.Mode.SRC_IN);
         }
         btnBack.setEnabled(canGo);
+    }
+
+    private void showHistoryPopup(View anchor, boolean forward) {
+        if (activeTab == null || activeTab.myWeb == null) return;
+        final WebView web = activeTab.myWeb;
+        WebBackForwardList list = web.copyBackForwardList();
+        int cur = list.getCurrentIndex();
+        PopupMenu p = new PopupMenu(this, anchor);
+        if (forward == true) {
+            for (int i = list.getSize() - 1; i > cur; i--) {
+                WebHistoryItem hi = list.getItemAtIndex(i);
+                String t = hi.getTitle();
+                if (t == null || t.isEmpty() == true) {
+                    t = hi.getUrl();
+                }
+                p.getMenu().add(Menu.NONE, i, Menu.NONE, t);
+            }
+        } else {
+            for (int i = cur - 1; i >= 0; i--) {
+                WebHistoryItem hi = list.getItemAtIndex(i);
+                String t = hi.getTitle();
+                if (t == null || t.isEmpty() == true) {
+                    t = hi.getUrl();
+                }
+                p.getMenu().add(Menu.NONE, i, Menu.NONE, t);
+            }
+        }
+        p.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int idx = item.getItemId();
+                int steps = idx - web.copyBackForwardList().getCurrentIndex();
+                web.goBackOrForward(steps);
+                return true;
+            }
+        });
+        p.show();
     }
 
     private boolean isFileDownload(String u) {
