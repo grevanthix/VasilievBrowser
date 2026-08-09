@@ -475,7 +475,6 @@ public class MainActivity extends Activity {
     private void buildLayouts() {
         layoutMain.removeView(theToolbar);
         layoutMain.removeView(findBarLayout);
-        layoutMain.removeView(loadBar);
         layoutMain.removeView(webBox);
         
         if (btnFwd != null) {
@@ -495,14 +494,12 @@ public class MainActivity extends Activity {
         }
 
         if (toolbarBtm == true) {
-            layoutMain.addView(loadBar);
             layoutMain.addView(webBox);
             layoutMain.addView(findBarLayout);
             layoutMain.addView(theToolbar);
         } else {
             layoutMain.addView(theToolbar);
             layoutMain.addView(findBarLayout);
-            layoutMain.addView(loadBar);
             layoutMain.addView(webBox);
         }
     }

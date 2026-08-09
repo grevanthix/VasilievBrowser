@@ -32,38 +32,52 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_tuda" />
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/urlInputContainer"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_input"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="14dp"
-            android:paddingRight="6dp">
+            android:background="@drawable/bg_input">
 
-            <EditText
-                android:id="@+id/urlInput"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:hint="@string/hint_url"
-                android:imeOptions="actionGo"
-                android:inputType="textUri"
-                android:maxLines="1"
-                android:textColor="@color/text_high_emphasis"
-                android:textColorHint="@color/text_medium_emphasis"
-                android:textSize="14sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="14dp"
+                android:paddingRight="6dp">
 
-            <ImageButton
-                android:id="@+id/btnGo"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_arrow_forward" />
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/urlInput"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/hint_url"
+                    android:imeOptions="actionGo"
+                    android:inputType="textUri"
+                    android:maxLines="1"
+                    android:textColor="@color/text_high_emphasis"
+                    android:textColorHint="@color/text_medium_emphasis"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/btnGo"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_arrow_forward" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_gravity="bottom"
+                android:progressDrawable="@android:drawable/progress_horizontal"
+                android:visibility="gone" />
+        </FrameLayout>
 
         <ImageButton
             android:id="@+id/btnGridToolbar"
@@ -151,14 +165,6 @@
             android:src="@drawable/ic_area_51"
             android:tint="@color/text_high_emphasis" />
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:progressDrawable="@android:drawable/progress_horizontal"
-        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/webViewContainer"
