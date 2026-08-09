@@ -239,7 +239,7 @@ public class SettingsActivity extends Activity {
                     startActivity(tgIntent);
                 } catch (Exception e) {
                     Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://t.me/VasilicvBrowser"));
+                        Uri.parse("https://t.me/VasilievBrowser"));
                     startActivity(webIntent);
                 }
             }
