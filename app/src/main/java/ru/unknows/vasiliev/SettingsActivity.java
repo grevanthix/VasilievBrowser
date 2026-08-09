@@ -230,6 +230,21 @@ public class SettingsActivity extends Activity {
             vers.setText(String.format(getString(R.string.version), "1.0.0"));
         }
 
+        vers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent tgIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("tg://resolve?domain=VasilievBrowser"));
+                    startActivity(tgIntent);
+                } catch (Exception e) {
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://t.me/VasilicvBrowser"));
+                    startActivity(webIntent);
+                }
+            }
+        });
+
         customBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
