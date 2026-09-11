@@ -8,7 +8,6 @@ gradle.properties
 
 # Log/OS Files
 *.log
-latest.log.2
 
 # Android Studio generated files and folders
 captures/
