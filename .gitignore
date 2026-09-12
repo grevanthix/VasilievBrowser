@@ -16,6 +16,7 @@ captures/
 *.aab
 *.apk
 output-metadata.json
+/gen/
 
 # IntelliJ
 *.iml
