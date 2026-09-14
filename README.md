@@ -18,7 +18,6 @@ A lightweight Android browser built without extra libraries or bloat, so it stay
 - Appearance settings: toolbar position, corner radius, black background and more
 - English and Russian localization
 - Optional site blocklist/warning list (empty by default, see below)
-- Welcome screen on first launch
 - Clear cache and cookies
 
 ## Site blocklist
