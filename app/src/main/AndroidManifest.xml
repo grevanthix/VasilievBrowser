@@ -34,12 +34,6 @@
         </activity>
 
         <activity 
-            android:name=".WelcomeActivity"
-            android:label=""
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:resizeableActivity="true" />
-
-        <activity 
             android:name=".SettingsActivity"
             android:label=""
             android:configChanges="orientation|keyboardHidden|screenSize"

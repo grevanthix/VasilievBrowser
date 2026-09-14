@@ -220,12 +220,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        if (myPrefs.getBoolean("is_first_run", true) == true) {
-            Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
-            startActivityForResult(i, 101);
-        } else {
-            startBrowser();
-        }
+        startBrowser();
 
         btnFwd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -425,9 +420,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onActivityResult(int reqCode, int resCode, Intent d) {
-        if (reqCode == 101 && resCode == RESULT_OK) {
-            startBrowser();
-        } else if (reqCode == REQUEST_HISTORY && resCode == RESULT_OK && d != null) {
+        if (reqCode == REQUEST_HISTORY && resCode == RESULT_OK && d != null) {
             String u = d.getStringExtra(HistoryActivity.EXTRA_URL);
             if (u != null && activeTab != null) {
                 makeNewTab(false, u);
@@ -526,8 +519,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (myPrefs.getBoolean("is_first_run", true) == false) {
-            getSettings();
+        getSettings();
             buildLayouts();
             setupWebViews();
             if (activeTab != null) {
@@ -547,7 +539,6 @@ public class MainActivity extends Activity {
                     }
                 }
             }
-        }
     }
 
     private void runUrl(BrowserTab t, String s) {

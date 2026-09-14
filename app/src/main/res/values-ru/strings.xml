@@ -32,17 +32,12 @@
     <string name="menu_close_all_tabs">Закрыть все вкладки</string>
     <string name="unnamed">Без имени</string>
     <string name="ntp_incognito">Инкогнито?</string>
-    <string name="welcome_title">Добро пожаловать!</string>
-    <string name="welcome_subtitle">Настройте браузер «Васильев» под себя</string>
-    <string name="default_search">Поисковая система по умолчанию</string>
     <string name="homepage">Стартовая страница</string>
     <string name="builtin">Встроенная</string>
     <string name="custom">Своя</string>
-    <string name="display_params">Параметры отображения</string>
     <string name="enable_js">Исполнение сценариев JavaScript</string>
     <string name="load_images">Автозагрузка картинок</string>
     <string name="restore_tabs">Восстанавливать вкладки?</string>
-    <string name="start_work">Начать работу</string>
     <string name="copy_text">Копировать текст</string>
     <string name="copy_url">Копировать адрес</string>
     <string name="copy_picture">Скопировать картинку</string>

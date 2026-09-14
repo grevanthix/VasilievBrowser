@@ -32,17 +32,12 @@
     <string name="menu_close_all_tabs">Close all tabs</string>
     <string name="unnamed">Unnamed</string>
     <string name="ntp_incognito">Incognito?</string>
-    <string name="welcome_title">Welcome!</string>
-    <string name="welcome_subtitle">Customize "Vasiliev" browser</string>
-    <string name="default_search">Default search engine</string>
     <string name="homepage">Homepage</string>
     <string name="builtin">Built-in</string>
     <string name="custom">Custom</string>
-    <string name="display_params">Display parameters</string>
     <string name="enable_js">Enable JavaScript</string>
     <string name="load_images">Load images automatically</string>
     <string name="restore_tabs">Restore tabs?</string>
-    <string name="start_work">Get started</string>
     <string name="copy_text">Copy text</string>
     <string name="copy_url">Copy URL</string>
     <string name="copy_picture">Copy picture</string>
